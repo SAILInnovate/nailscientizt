@@ -1,5 +1,5 @@
 -- ============================================
--- REFERRAL SYSTEM SETUP FOR LOCKSBYWOG
+-- REFERRAL SYSTEM SETUP FOR LOCSBYWOG
 -- ============================================
 
 -- 1. Raise all service prices by £10 to account for the referral discount

@@ -73,14 +73,14 @@ export function ContactSection() {
 
             <div className="space-y-4 flex flex-col items-center justify-center">
               <a
-                href="https://instagram.com/locksbywog"
+                href="https://instagram.com/locsbywog"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 text-near-black hover:text-near-black/70 transition-colors"
                 aria-label="Instagram"
               >
                 <InstagramIcon size={20} />
-                <span className="font-display font-bold">@locksbywog</span>
+                <span className="font-display font-bold">@locsbywog</span>
               </a>
 
               <div className="flex items-center justify-center gap-3 text-near-black">
@@ -97,7 +97,7 @@ export function ContactSection() {
             {/* Logo */}
             <div className="mt-12 flex justify-center">
               <img
-                src="/images/locksbywogggg.png"
+                src="/images/locsbywogggg.png"
                 alt="LocsByWog Logo"
                 className="w-32 h-auto opacity-80"
               />
@@ -116,7 +116,7 @@ export function ContactSection() {
             </a>
             <div className="flex gap-6 justify-center md:justify-start">
               <a
-                href="https://instagram.com/locksbywog"
+                href="https://instagram.com/locsbywog"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-near-black/60 hover:text-near-black transition-colors"

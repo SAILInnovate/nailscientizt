@@ -171,7 +171,7 @@ export function ServicesListSection({ onBookClick }: ServicesListSectionProps) {
               </p>
             </div>
             <a
-              href="https://instagram.com/locksbywog"
+              href="https://instagram.com/locsbywog"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-near-black text-acid-lime font-display font-bold uppercase text-sm px-6 py-3 border-2 border-near-black hover:bg-near-black/90 transition-colors text-center whitespace-nowrap"

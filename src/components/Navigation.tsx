@@ -46,7 +46,7 @@ export function Navigation({ onBookClick }: NavigationProps) {
             className="hover:rotate-[-2deg] hover:scale-105 transition-transform duration-300"
           >
             <img
-              src="/images/locksbywogggg.png"
+              src="/images/locsbywogggg.png"
               alt="LocsByWog Logo"
               className="h-10 md:h-12 w-auto object-contain"
             />

@@ -174,7 +174,7 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
       }
 
       // Save successful booking intent to local storage so user sees a reminder later
-      localStorage.setItem('locksbywog_booking', JSON.stringify({
+      localStorage.setItem('locsbywog_booking', JSON.stringify({
         service: selectedServiceDetails.name,
         date: formData.date,
         time: formData.time,

@@ -90,7 +90,7 @@ export function HeroSection({ onBookClick }: HeroSectionProps) {
         style={{ transform: 'rotate(-4deg)' }}
       >
         <img
-          src="/images/locksbywogggg.png"
+          src="/images/locsbywogggg.png"
           alt="LocsByWog Logo"
           className="h-16 md:h-28 w-auto object-contain drop-shadow-[4px_4px_0_rgba(18,18,18,1)]"
         />

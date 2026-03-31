@@ -12,7 +12,7 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
 
     useEffect(() => {
         // Check if user has dismissed the banner before
-        const dismissed = sessionStorage.getItem('locksbywog_banner_dismissed');
+        const dismissed = sessionStorage.getItem('locsbywog_banner_dismissed');
         if (dismissed) {
             setIsDismissed(true);
             return;
@@ -27,7 +27,7 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
         setIsVisible(false);
         setTimeout(() => {
             setIsDismissed(true);
-            sessionStorage.setItem('locksbywog_banner_dismissed', 'true');
+            sessionStorage.setItem('locsbywog_banner_dismissed', 'true');
         }, 400);
     };
 

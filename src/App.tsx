@@ -35,7 +35,7 @@ function App() {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem('locksbywog_booking');
+    const saved = localStorage.getItem('locsbywog_booking');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -43,7 +43,7 @@ function App() {
         if (bookingDate >= new Date()) {
           setExistingBooking(parsed);
         } else {
-          localStorage.removeItem('locksbywog_booking');
+          localStorage.removeItem('locsbywog_booking');
         }
       } catch (e) {
         // ignore
