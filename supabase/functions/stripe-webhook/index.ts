@@ -189,7 +189,7 @@ serve(async (req) => {
                   <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.8;">
                     <li><strong>Date:</strong> ${dateFormatted}</li>
                     <li><strong>Time:</strong> ${timeFormatted}</li>
-                    <li><strong>Location:</strong> Salford, Manchester (M6 6DQ)</li>
+                    <li><strong>Location:</strong> Your Provided Address (Mobile Service)</li>
                     <li style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;"><strong>Total Price:</strong> £${totalPrice.toFixed(2)} ${isLate ? '<span style="font-size: 11px; background-color: #c3ff00; color: #000; padding: 1px 6px; border-radius: 3px; font-weight: bold; margin-left: 5px;">LATE RATE APPLIED</span>' : ''}</li>
                     <li><strong>Amount Paid (Deposit):</strong> £${depositAmount.toFixed(2)}</li>
                     <li style="font-size: 16px; margin-top: 5px; color: #0B6B4F;"><strong>Remaining Balance:</strong> £${remainingBalance.toFixed(2)}</li>
@@ -200,7 +200,7 @@ serve(async (req) => {
                 </div>
         
                 <p style="font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-                  <strong>Late Arrival Policy:</strong> Please arrive on time. There is a <strong>£10 late fee</strong> if you are more than 15 minutes late to your appointment.
+                  <strong>Wait Time Policy:</strong> Please be ready at your scheduled time. There is a <strong>£10 fee</strong> for wait times over 15 minutes upon my arrival at your location.
                 </p>
                 
                 <p style="font-size: 15px; font-weight: bold;">

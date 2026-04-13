@@ -36,6 +36,7 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
     email: '',
     instagram: '',
     phone: '',
+    address: '',
     service: '',
     date: getMinDate(),
     time: '',
@@ -126,7 +127,7 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
       deposit_paid: false,
       deposit_amount: depositAmount,
       total_price: basePrice,
-      notes: formData.notes,
+      notes: `Address: ${formData.address}${formData.notes ? `\n\nNotes: ${formData.notes}` : ''}`,
       status: 'pending',
     });
 
@@ -196,6 +197,7 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
       email: '',
       instagram: '',
       phone: '',
+      address: '',
       service: '',
       date: getMinDate(),
       time: '',
@@ -471,6 +473,18 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
               </div>
 
               <div>
+                <Label htmlFor="address" className="font-display font-bold uppercase text-xs text-gray-500 tracking-wider">Your Address (I travel to you!) *</Label>
+                <textarea
+                  id="address"
+                  value={formData.address}
+                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  className="w-full border-2 border-black/10 focus:border-near-black mt-1 p-4 rounded-xl min-h-[80px] resize-none focus:outline-none transition-colors bg-white font-medium text-base"
+                  placeholder="Full address including postcode"
+                  required
+                />
+              </div>
+
+              <div>
                 <Label htmlFor="notes" className="font-display font-bold uppercase text-xs text-gray-500 tracking-wider">Any Note? (Optional)</Label>
                 <textarea
                   id="notes"
@@ -510,8 +524,8 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
                   <div className="flex justify-between border-b border-black/5 pb-2 items-start">
                     <span className="text-gray-500 font-medium shrink-0">Location</span>
                     <div className="text-right">
-                      <span className="font-bold">Manchester</span>
-                      <span className="block text-[11px] font-normal text-gray-500 mt-0.5 leading-tight">(Full address & postcode<br />provided upon booking)</span>
+                      <span className="font-bold">Your Location</span>
+                      <span className="block text-[11px] font-normal text-gray-500 mt-0.5 leading-tight">(Mobile Service - I come to you)</span>
                     </div>
                   </div>
 
@@ -545,7 +559,7 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
                 <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-1">Total Due Now</p>
                 <p className="text-6xl font-display font-black tracking-tight text-near-black">£{totalNow.toFixed(2)}</p>
                 <p className="text-[11px] text-gray-400 mt-3 italic leading-tight uppercase font-bold tracking-wider">
-                  ⚠️ Note: There is a £10 fee for late arrivals (over 15 mins).
+                  ⚠️ Note: There is a £10 fee for wait times (over 15 mins upon arrival).
                 </p>
                 <p className="text-sm text-gray-500 mt-2 max-w-[250px] mx-auto leading-tight">Secure your slot with a non-refundable £{depositAmount} deposit (+£{processingFee} fee). The £{depositAmount} is deducted from your final bill.</p>
               </div>
@@ -587,7 +601,7 @@ export function BookingModal({ isOpen, onClose, preselectedService }: BookingMod
                   <p><span className="text-gray-500 inline-block w-20">Service:</span> <span className="font-bold">{new URLSearchParams(window.location.search).get('service') || formData.service || "Booking"}</span></p>
                   <p><span className="text-gray-500 inline-block w-20">Date:</span> <span className="font-bold">{new URLSearchParams(window.location.search).get('date') || formData.date}</span></p>
                   <p><span className="text-gray-500 inline-block w-20">Time:</span> <span className="font-bold">{new URLSearchParams(window.location.search).get('time') || formData.time}</span></p>
-                  <p><span className="text-gray-500 inline-block w-20">Where:</span> <span className="font-bold">Salford (M6 6DQ)</span></p>
+                  <p><span className="text-gray-500 inline-block w-20">Where:</span> <span className="font-bold">Your Provided Address</span></p>
                 </div>
               </div>
 

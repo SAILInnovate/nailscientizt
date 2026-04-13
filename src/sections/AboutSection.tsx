@@ -105,7 +105,7 @@ export function AboutSection() {
         className="relative z-30 mb-10 md:mb-0 mx-auto md:mx-0 md:absolute md:top-[52vh] md:left-[6vw] md:w-[40vw] max-w-[480px] text-center md:text-left"
       >
         <p className="body-text text-off-white/90 leading-relaxed text-base">
-          I'm Wog—based in Salford, Manchester. I specialize in neat, long-lasting
+          I'm Wog—your mobile stylist in Greater Manchester (I travel to you!). I specialize in neat, long-lasting
           braids and loc styling that protects your hair and keeps you looking fresh.
         </p>
         <p className="body-text text-off-white/90 leading-relaxed mt-4 text-base">
