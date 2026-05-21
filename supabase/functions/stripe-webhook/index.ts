@@ -162,7 +162,7 @@ serve(async (req) => {
 
       await resend.emails.send({
         from: "LocsByWog <bookings@blocq.co.uk>",
-        to: ["locsbywog2110@gmail.com"],
+        to: ["locksbywog2110@gmail.com"],
         subject: `${isLate ? '🌙 ' : ''}NEW BOOKING: ${booking.name} on ${dateFormatted} at ${timeFormatted}`,
         html: wogEmailHtml,
       });
