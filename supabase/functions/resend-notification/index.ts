@@ -105,7 +105,7 @@ serve(async (req) => {
 
     await resend.emails.send({
       from: "The Nail Scientizt <bookings@blocq.co.uk>",
-      to: ["thenailscientizt@gmail.com"],
+      to: ["aishabelmoses@gmail.com"],
       subject: `${isLate ? '🌙 ' : ''}[RESEND] BOOKING: ${booking.name} on ${dateFormatted} at ${timeFormatted}`,
       html: aishabelEmailHtml,
     });
