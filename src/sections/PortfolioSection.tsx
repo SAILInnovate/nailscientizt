@@ -40,18 +40,28 @@ export function PortfolioSection({ onBookClick }: PortfolioSectionProps) {
       });
     };
 
-    if (Hls.isSupported()) {
-      // Chrome, Firefox, Edge — use hls.js
-      hls = new Hls({ autoStartLoad: true });
-      hls.loadSource(HLS_URL);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        tryPlay();
-      });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      // Safari — native HLS support
-      video.src = HLS_URL;
-      video.addEventListener('canplay', tryPlay, { once: true });
+    try {
+      if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Safari / iOS — native HLS support (check this FIRST)
+        video.src = HLS_URL;
+        video.addEventListener('canplay', tryPlay, { once: true });
+      } else if (Hls.isSupported()) {
+        // Chrome, Firefox, Edge — use hls.js
+        hls = new Hls({ autoStartLoad: true });
+        hls.loadSource(HLS_URL);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          tryPlay();
+        });
+        hls.on(Hls.Events.ERROR, (_event, data) => {
+          if (data.fatal) {
+            console.warn('HLS fatal error, skipping video');
+            hls?.destroy();
+          }
+        });
+      }
+    } catch (err) {
+      console.warn('Video setup failed:', err);
     }
 
     return () => {
