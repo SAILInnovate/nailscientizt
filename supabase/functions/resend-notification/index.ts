@@ -65,11 +65,11 @@ serve(async (req) => {
     const igLink = `https://instagram.com/${cleanIG}`;
     const cleanPhone = (booking.phone || "").replace(/[^0-9+]/g, '');
 
-    const wogEmailHtml = `
+    const aishabelEmailHtml = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #111111;">
-        <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Alright Wog, you've got a new booking! &nbsp;🎉 ${isLate ? '<span style="background-color: #c3ff00; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 12px; vertical-align: middle; margin-left: 10px;">LATE RATE</span>' : ''}</h2>
+        <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Alright Aishabel, you've got a new booking! &nbsp;🎉 ${isLate ? '<span style="background-color: #FF007F; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px; vertical-align: middle; margin-left: 10px;">LATE RATE</span>' : ''}</h2>
         <p style="font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-          Someone's just locked in a slot and paid their deposit. Here are the full details below so you can hit them up straight away.
+          A client has booked a slot and paid their deposit. Here are the details:
         </p>
         <div style="background-color: #f4f4f4; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.8;">
@@ -79,7 +79,7 @@ serve(async (req) => {
             <li style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;"><strong>Date:</strong> ${dateFormatted}</li>
             <li><strong>Time:</strong> ${timeFormatted}</li>
             <li><strong>Deposit Paid:</strong> £${Number(booking.deposit_amount).toFixed(2)}</li>
-            <li><strong>Balance Due:</strong> £${(Number(booking.total_price) - Number(booking.deposit_amount)).toFixed(2)} ${isLate ? '<span style="color: #0B6B4F; font-weight: bold;">(Includes Late Rate)</span>' : ''}</li>
+            <li><strong>Balance Due:</strong> £${(Number(booking.total_price) - Number(booking.deposit_amount)).toFixed(2)} ${isLate ? '<span style="color: #FF007F; font-weight: bold;">(Includes Late Rate)</span>' : ''}</li>
           </ul>
           ${booking.notes ? `
           <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0e0e0; font-size: 14px;">
@@ -93,21 +93,21 @@ serve(async (req) => {
           <a href="${igLink}" style="background-color: #111111; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; display: inline-block;">
             DM on Instagram
           </a>
-          <a href="tel:${cleanPhone}" style="background-color: #0B6B4F; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; display: inline-block; margin-left:10px;">
+          <a href="tel:${cleanPhone}" style="background-color: #FF007F; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; display: inline-block; margin-left:10px;">
              Call / Text
           </a>
         </div>
         <p style="font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 15px;">
-          This is a re-sent notification from your LocsByWog booking system.
+          This is a re-sent notification from your The Nail Scientizt booking system.
         </p>
       </div>
     `;
 
     await resend.emails.send({
-      from: "LocsByWog <bookings@blocq.co.uk>",
-      to: ["locksbywog2110@gmail.com"],
+      from: "The Nail Scientizt <bookings@blocq.co.uk>",
+      to: ["thenailscientizt@gmail.com"],
       subject: `${isLate ? '🌙 ' : ''}[RESEND] BOOKING: ${booking.name} on ${dateFormatted} at ${timeFormatted}`,
-      html: wogEmailHtml,
+      html: aishabelEmailHtml,
     });
 
     return new Response(JSON.stringify({ success: true, message: `Resent notification for ${booking.name}` }), {

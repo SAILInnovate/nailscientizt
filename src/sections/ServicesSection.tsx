@@ -95,7 +95,7 @@ export function ServicesSection({ onBookClick }: ServicesSectionProps) {
     <section
       ref={sectionRef}
       id="services"
-      className="bg-money-green z-40 relative w-full overflow-hidden flex flex-col justify-center py-20 px-6 md:block md:section-pinned"
+      className="bg-obsidian z-40 relative w-full overflow-hidden flex flex-col justify-center py-20 px-6 md:block md:section-pinned"
     >
       {/* Left Image */}
       <div
@@ -117,12 +117,12 @@ export function ServicesSection({ onBookClick }: ServicesSectionProps) {
         ref={headlineRef}
         className="relative z-30 mx-auto md:mx-0 md:absolute md:left-[62vw] md:top-[34vh] w-[90vw] md:w-[32vw] text-center md:text-left"
       >
-        <h2 className="heading-xl text-off-white text-5xl md:text-5xl lg:text-7xl leading-tight">
+        <h2 className="heading-xl text-lab-white text-5xl md:text-5xl lg:text-7xl leading-tight">
           GET
           <br className="hidden md:block" />
           {' '}STYLED
         </h2>
-        <p className="body-text text-off-white/80 mt-4 md:mt-6 max-w-sm mx-auto md:mx-0 text-base">
+        <p className="body-text text-lab-white/80 mt-4 md:mt-6 max-w-sm mx-auto md:mx-0 text-base">
           From classic box braids to loc retwists—done with care.
         </p>
         <button
@@ -136,7 +136,7 @@ export function ServicesSection({ onBookClick }: ServicesSectionProps) {
       {/* Star Icon - Top Right */}
       <StarIcon
         ref={starRef}
-        className="absolute text-acid-lime z-40 hidden md:block md:left-[90vw] md:top-[12vh]"
+        className="absolute text-neon-pink z-40 hidden md:block md:left-[90vw] md:top-[12vh]"
         style={{
           width: 'clamp(28px, 4vw, 48px)',
           height: 'clamp(28px, 4vw, 48px)',
@@ -146,7 +146,7 @@ export function ServicesSection({ onBookClick }: ServicesSectionProps) {
       {/* Sparkle Icon - Bottom Left */}
       <SparkleIcon
         ref={sparkleRef}
-        className="absolute text-acid-lime z-40 hidden md:block md:left-[10vw] md:top-[74vh]"
+        className="absolute text-neon-pink z-40 hidden md:block md:left-[10vw] md:top-[74vh]"
         style={{
           width: 'clamp(28px, 4vw, 48px)',
           height: 'clamp(28px, 4vw, 48px)',

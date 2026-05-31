@@ -35,7 +35,7 @@ function App() {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem('locsbywog_booking');
+    const saved = localStorage.getItem('thenailscientizt_booking');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -43,7 +43,7 @@ function App() {
         if (bookingDate >= new Date()) {
           setExistingBooking(parsed);
         } else {
-          localStorage.removeItem('locsbywog_booking');
+          localStorage.removeItem('thenailscientizt_booking');
         }
       } catch (e) {
         // ignore
@@ -83,7 +83,7 @@ function App() {
 
       {/* Return Customer Booking Reminder */}
       {existingBooking && (
-        <div className="bg-acid-lime text-near-black py-3 px-6 fixed bottom-0 left-0 right-0 z-[100] border-t-2 border-near-black shadow-lg flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-2">
+        <div className="bg-neon-pink text-obsidian py-3 px-6 fixed bottom-0 left-0 right-0 z-[100] border-t-2 border-obsidian shadow-lg flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-2">
           <p className="font-display font-bold uppercase text-sm md:text-base">
             📅 Upcoming Appointment: {existingBooking.service} on {existingBooking.date} at {existingBooking.time}
           </p>

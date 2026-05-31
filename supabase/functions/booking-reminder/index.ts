@@ -60,7 +60,7 @@ serve(async (req) => {
     const reminderHtml = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #111111;">
         
-        <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Getting ready for your appointment! &nbsp;💈</h2>
+        <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Getting ready for your appointment! &nbsp;💅</h2>
         
         <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
           Hey ${booking.name},<br/><br/>
@@ -76,8 +76,8 @@ serve(async (req) => {
             <li style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;"><strong>Service Price:</strong> &pound;${totalPrice.toFixed(2)}</li>
             <li><strong>Deposit Paid:</strong> &pound;${depositAmount.toFixed(2)}</li>
             ${remainingBalance > 0
-              ? `<li style="font-size: 16px; margin-top: 5px; color: #0B6B4F;"><strong>Left to pay on the day:</strong> &pound;${remainingBalance.toFixed(2)}</li>`
-              : `<li style="font-size: 16px; margin-top: 5px; color: #0B6B4F;"><strong>&check; Paid in Full</strong></li>`
+              ? `<li style="font-size: 16px; margin-top: 5px; color: #FF007F;"><strong>Left to pay on the day:</strong> &pound;${remainingBalance.toFixed(2)}</li>`
+              : `<li style="font-size: 16px; margin-top: 5px; color: #FF007F;"><strong>&check; Paid in Full</strong></li>`
             }
           </ul>
           ${booking.notes ? `
@@ -89,10 +89,10 @@ serve(async (req) => {
         </div>
 
         <p style="font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-          If anything above doesn't look right, just reply to this email or DM me on Instagram <a href="https://instagram.com/locsbywog" style="color: #0B6B4F; font-weight: bold;">@locsbywog</a> and I'll sort it out.
+          If anything above doesn't look right, just reply to this email or DM me on Instagram <a href="https://instagram.com/thenailscientizt" style="color: #FF007F; font-weight: bold;">@thenailscientizt</a> and I'll sort it out.
         </p>
 
-        <div style="background-color: #0B6B4F; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px;">
+        <div style="background-color: #FF007F; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px;">
           <p style="color: #ffffff; font-size: 14px; margin: 0; line-height: 1.5;">
             <strong>Quick reminder:</strong> Please arrive on time. There is a &pound;10 fee for lateness over 15 minutes past your appointment time.
           </p>
@@ -100,19 +100,19 @@ serve(async (req) => {
 
         <p style="font-size: 15px; font-weight: bold;">
           See you soon,<br/>
-          Wog
+          Aishabel
         </p>
         
         <p style="font-size: 11px; color: #999; border-top: 1px solid #eee; padding-top: 15px; margin-top: 20px;">
-          LocsByWog &middot; Eccles, Salford &middot; M30 7PL
+          The Nail Scientizt &middot; Eccles, Salford &middot; M30 7PL
         </p>
       </div>
     `;
 
     await resend.emails.send({
-      from: "LocsByWog <bookings@blocq.co.uk>",
+      from: "The Nail Scientizt <bookings@blocq.co.uk>",
       to: [booking.email],
-      subject: `Getting ready for your booking, ${booking.name}! 💈`,
+      subject: `Getting ready for your booking, ${booking.name}! 💅`,
       html: reminderHtml,
     });
 

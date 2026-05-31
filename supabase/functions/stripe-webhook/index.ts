@@ -114,13 +114,13 @@ serve(async (req) => {
       const igLink = `https://instagram.com/${cleanIG}`;
       const cleanPhone = (booking.phone || "").replace(/[^0-9+]/g, '');
 
-      const wogEmailHtml = `
+      const aishabelEmailHtml = `
               <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; max-width: 600px; margin: 0 auto; padding: 20px; color: #111111;">
                 
-                <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Alright Wog, you've got a new booking! &nbsp;🎉 ${isLate ? '<span style="background-color: #c3ff00; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 12px; vertical-align: middle; margin-left: 10px;">LATE RATE</span>' : ''}</h2>
+                <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Alright Aishabel, you've got a new booking! &nbsp;🎉 ${isLate ? '<span style="background-color: #FF007F; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px; vertical-align: middle; margin-left: 10px;">LATE RATE</span>' : ''}</h2>
                 
                 <p style="font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-                  Someone's just locked in a slot and paid their deposit. Here are the full details below so you can hit them up straight away.
+                  A client has booked a slot and paid their deposit. Here are the details:
                 </p>
 
                 <div style="background-color: #f4f4f4; border-radius: 8px; padding: 20px; margin-bottom: 24px;">
@@ -131,7 +131,7 @@ serve(async (req) => {
                     <li style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;"><strong>Date:</strong> ${dateFormatted}</li>
                     <li><strong>Time:</strong> ${timeFormatted}</li>
                     <li><strong>Deposit Paid:</strong> £${Number(booking.deposit_amount).toFixed(2)}</li>
-                    <li><strong>Balance Due:</strong> £${(Number(booking.total_price) - Number(booking.deposit_amount)).toFixed(2)} ${isLate ? '<span style="color: #0B6B4F; font-weight: bold;">(Includes Late Rate)</span>' : ''}</li>
+                    <li><strong>Balance Due:</strong> £${(Number(booking.total_price) - Number(booking.deposit_amount)).toFixed(2)} ${isLate ? '<span style="color: #FF007F; font-weight: bold;">(Includes Late Rate)</span>' : ''}</li>
                   </ul>
                   
                   ${booking.notes ? `
@@ -149,22 +149,22 @@ serve(async (req) => {
                     DM on Instagram
                   </a>
                   
-                  <a href="tel:${cleanPhone}" style="background-color: #0B6B4F; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; display: inline-block; margin-left:10px;">
+                  <a href="tel:${cleanPhone}" style="background-color: #FF007F; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; display: inline-block; margin-left:10px;">
                      Call / Text
                   </a>
                 </div>
 
                 <p style="font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 15px;">
-                  This is an automated notification from your LocsByWog booking system.
+                  This is an automated notification from your The Nail Scientizt booking system.
                 </p>
               </div>
             `;
 
       await resend.emails.send({
-        from: "LocsByWog <bookings@blocq.co.uk>",
-        to: ["locksbywog2110@gmail.com"],
+        from: "The Nail Scientizt <bookings@blocq.co.uk>",
+        to: ["thenailscientizt@gmail.com"],
         subject: `${isLate ? '🌙 ' : ''}NEW BOOKING: ${booking.name} on ${dateFormatted} at ${timeFormatted}`,
-        html: wogEmailHtml,
+        html: aishabelEmailHtml,
       });
 
       console.log(`Successfully sent stylist notification email for booking ${bookingId}`);
@@ -190,11 +190,11 @@ serve(async (req) => {
                     <li><strong>Date:</strong> ${dateFormatted}</li>
                     <li><strong>Time:</strong> ${timeFormatted}</li>
                     <li><strong>Location:</strong> Eccles, Salford · M30 7PL</li>
-                    <li style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;"><strong>Total Price:</strong> £${totalPrice.toFixed(2)} ${isLate ? '<span style="font-size: 11px; background-color: #c3ff00; color: #000; padding: 1px 6px; border-radius: 3px; font-weight: bold; margin-left: 5px;">LATE RATE APPLIED</span>' : ''}</li>
+                    <li style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;"><strong>Total Price:</strong> £${totalPrice.toFixed(2)} ${isLate ? '<span style="font-size: 11px; background-color: #FF007F; color: #fff; padding: 1px 6px; border-radius: 3px; font-weight: bold; margin-left: 5px;">LATE RATE APPLIED</span>' : ''}</li>
                     <li><strong>Amount Paid:</strong> £${depositAmount.toFixed(2)}</li>
                     ${remainingBalance > 0
-                      ? `<li style="font-size: 16px; margin-top: 5px; color: #0B6B4F;"><strong>Remaining Balance:</strong> £${remainingBalance.toFixed(2)}</li>`
-                      : `<li style="font-size: 16px; margin-top: 5px; color: #0B6B4F;"><strong>✅ Paid in Full</strong></li>`
+                      ? `<li style="font-size: 16px; margin-top: 5px; color: #FF007F;"><strong>Remaining Balance:</strong> £${remainingBalance.toFixed(2)}</li>`
+                      : `<li style="font-size: 16px; margin-top: 5px; color: #FF007F;"><strong>✅ Paid in Full</strong></li>`
                     }
                   </ul>
                   ${remainingBalance > 0
@@ -211,7 +211,7 @@ serve(async (req) => {
                 
                 <p style="font-size: 15px; font-weight: bold;">
                   See you soon,<br/>
-                  Locs By Wog
+                  Aishabel
                 </p>
                 
                 <p style="font-size: 11px; color: #999; border-top: 1px solid #eee; padding-top: 15px; margin-top: 20px;">
@@ -221,9 +221,9 @@ serve(async (req) => {
             `;
 
       await resend.emails.send({
-        from: "LocsByWog <bookings@blocq.co.uk>",
+        from: "The Nail Scientizt <bookings@blocq.co.uk>",
         to: [booking.email],
-        subject: `Booking Confirmed - Locs By Wog`,
+        subject: `Booking Confirmed - The Nail Scientizt`,
         html: customerEmailHtml,
       });
 

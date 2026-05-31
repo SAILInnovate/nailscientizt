@@ -32,61 +32,49 @@ export interface Service {
   name: string;
   description: string;
   price_from: number;
+  deposit_required: number;
   duration: string;
   duration_minutes: number;
+  category: string;
   image?: string;
 }
 
 // Mock services data as fallback
 const FALLBACK_SERVICES: Service[] = [
-  {
-    id: '1',
-    name: 'Knotless Braids',
-    description: 'Lightweight, natural-looking, scalp-friendly braids that last for weeks.',
-    price_from: 55,
-    duration: '3-5 hours',
-    duration_minutes: 240,
-  },
-  {
-    id: '2',
-    name: 'Locs & Retwists',
-    description: 'Neat parts, clean finish, healthy edges. Keep your locs looking fresh.',
-    price_from: 45,
-    duration: '2-4 hours',
-    duration_minutes: 180,
-  },
-  {
-    id: '3',
-    name: "Kids' Styles",
-    description: 'Quick, gentle, long-lasting styles for the little ones.',
-    price_from: 25,
-    duration: '1-3 hours',
-    duration_minutes: 120,
-  },
-  {
-    id: '4',
-    name: 'Box Braids',
-    description: 'Classic protective style with clean parts and professional finish.',
-    price_from: 60,
-    duration: '4-6 hours',
-    duration_minutes: 300,
-  },
-  {
-    id: '5',
-    name: 'Cornrows',
-    description: 'Sleek, stylish cornrows for any occasion.',
-    price_from: 30,
-    duration: '1-2 hours',
-    duration_minutes: 90,
-  },
-  {
-    id: '6',
-    name: 'Additional £1',
-    description: 'An extra charge or standalone £1 item.',
-    price_from: 1,
-    duration: '15 mins',
-    duration_minutes: 15,
-  },
+  // Short Canvas
+  { id: 's1', name: 'french tip nails', description: 'clean and classic, the perfect everyday nails. please use the add ONS for extra lengths (long-xxl), designs ect.', price_from: 35, deposit_required: 15, duration: '1h 45m', duration_minutes: 105, category: 'Hands - Short' },
+  { id: 's2', name: 'nail art', description: 'charms and gems are not included. design only. price can change depending on the complexity of the set.', price_from: 40, deposit_required: 15, duration: '2h', duration_minutes: 120, category: 'Hands - Short' },
+  { id: 's3', name: 'solid colour nails', description: 'includes one colour only', price_from: 30, deposit_required: 10, duration: '1h 20m', duration_minutes: 80, category: 'Hands - Short' },
+  { id: 's4', name: 'freestyle set', description: 'indecisive about a set?send me 5 inspo pictures 48 hours before your set so i can come up with a design for you. 3 small charms are included in this price.', price_from: 45, deposit_required: 15, duration: '2h 30m', duration_minutes: 150, category: 'Hands - Short' },
+  { id: 's5', name: 'infill', description: 'previous set must be 2 and a half weeks old. if over the time mark you will be charged full price. This price only includes french tip please include any add ONS', price_from: 30, deposit_required: 10, duration: '1h 55m', duration_minutes: 115, category: 'Hands - Short' },
+
+  // Medium Canvas
+  { id: 'm1', name: 'solid colour', description: 'includes one colour', price_from: 30, deposit_required: 10, duration: '1h 30m', duration_minutes: 90, category: 'Hands - Medium' },
+  { id: 'm2', name: 'french tip nails', description: 'classic french tip nails. please use the add ons for any extras (charms,length)', price_from: 35, deposit_required: 15, duration: '1h 45m', duration_minutes: 105, category: 'Hands - Medium' },
+  { id: 'm3', name: 'nail art', description: 'this does not include gems and rhinestones. please include any add ons. design only', price_from: 40, deposit_required: 15, duration: '2h', duration_minutes: 120, category: 'Hands - Medium' },
+  { id: 'm4', name: 'freestyle', description: 'indecisive about a set?send me 5 inspo pictures 48 hours before your set so i can come up with a design for you. 3 small charms are included in this price.', price_from: 45, deposit_required: 15, duration: '2h 30m', duration_minutes: 150, category: 'Hands - Medium' },
+
+  // Long Canvas
+  { id: 'l1', name: 'french tip', description: 'classic and clean. please use the add ons for any extras (charms,length)', price_from: 40, deposit_required: 15, duration: '2h', duration_minutes: 120, category: 'Hands - Long' },
+  { id: 'l2', name: 'freestyle', description: 'indecisive about a set?send me 5 inspo pictures 48 hours before your set so i can come up with a design for you. 3 small charms are included in this price.', price_from: 45, deposit_required: 15, duration: '2h 50m', duration_minutes: 170, category: 'Hands - Long' },
+  { id: 'l3', name: 'solid colour', description: 'one colour only.', price_from: 35, deposit_required: 15, duration: '1h 30m', duration_minutes: 90, category: 'Hands - Long' },
+  { id: 'l4', name: 'nail art', description: 'does not include charms and gems, design only. please include any add ONS.', price_from: 50, deposit_required: 15, duration: '2h 55m', duration_minutes: 175, category: 'Hands - Long' },
+  { id: 'l5', name: 'infill', description: 'old set must be 2 and a half weeks old. Any thing over that will be charged as a full set. please include any add ONS.', price_from: 40, deposit_required: 15, duration: '2h 35m', duration_minutes: 155, category: 'Hands - Long' },
+
+  // Pedicures
+  { id: 'p1', name: 'french tip toes', description: 'classic and clean!', price_from: 30, deposit_required: 10, duration: '1h', duration_minutes: 60, category: 'Toes' },
+  { id: 'p2', name: 'toes infill', description: 'for infill on toes that have been done 3- 4 weeks prior. Anything over this weeks will be charged as a full set.', price_from: 30, deposit_required: 10, duration: '55 mins', duration_minutes: 55, category: 'Toes' },
+  { id: 'p3', name: 'solid colour toes', description: 'includes one colour only.', price_from: 25, deposit_required: 10, duration: '50 mins', duration_minutes: 50, category: 'Toes' },
+
+  // Combos
+  { id: 'c1', name: 'full blinged out french tips', description: 'this service is for rhinestone french tips. this includes short-medium. for extra length please use the add ons', price_from: 60, deposit_required: 20, duration: '3h', duration_minutes: 180, category: 'Deals' },
+  { id: 'c2', name: 'prom deal', description: 'any set hands and feet for £65', price_from: 65, deposit_required: 20, duration: '2h 55m', duration_minutes: 175, category: 'Deals' },
+  { id: 'c3', name: 'prom deal with bestie', description: 'prom this prom deal with your friend and pay £60 each for any set hands and toes!', price_from: 120, deposit_required: 40, duration: '4h 40m', duration_minutes: 280, category: 'Deals' },
+  { id: 'c4', name: 'any set hand and toes deal', description: 'hand and toes = perfect combo!', price_from: 75, deposit_required: 20, duration: '3h', duration_minutes: 180, category: 'Deals' },
+  { id: 'c5', name: 'french tip hands and toes', description: 'french tip hands and toes deal', price_from: 55, deposit_required: 20, duration: '2h 20m', duration_minutes: 140, category: 'Deals' },
+
+  // Add-ons
+  { id: 'a1', name: 'soak off', description: 'keep your natural nails healthy!book a soak off if your nails are over 3-4 weeks old.', price_from: 10, deposit_required: 5, duration: '40 mins', duration_minutes: 40, category: 'Add-ons' },
 ];
 
 export async function getServices(): Promise<Service[]> {
@@ -111,8 +99,10 @@ export async function getServices(): Promise<Service[]> {
       name: s.name,
       description: s.description,
       price_from: Number(s.base_price),
-      duration: s.duration_minutes < 60 ? `${s.duration_minutes} mins` : `${s.duration_minutes / 60} hours`,
+      deposit_required: Number(s.deposit_required || 15),
+      duration: s.duration_minutes < 60 ? `${s.duration_minutes} mins` : `${Math.floor(s.duration_minutes / 60)}h ${s.duration_minutes % 60 > 0 ? (s.duration_minutes % 60) + 'm' : ''}`,
       duration_minutes: Number(s.duration_minutes),
+      category: s.category || 'General'
     }));
   } catch (err) {
     console.error('Failed to fetch services:', err);

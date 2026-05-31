@@ -76,12 +76,12 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-money-green z-30 relative w-full overflow-hidden flex flex-col justify-center py-20 px-6 md:block md:section-pinned"
+      className="bg-obsidian z-30 relative w-full overflow-hidden flex flex-col justify-center py-20 px-6 md:block md:section-pinned"
     >
       {/* Sparkle Icon */}
       <SparkleIcon
         ref={sparkleRef}
-        className="absolute text-acid-lime z-40 hidden md:block md:left-[8vw] md:top-[10vh]"
+        className="absolute text-neon-pink z-40 hidden md:block md:left-[8vw] md:top-[10vh]"
         style={{
           width: 'clamp(28px, 4vw, 48px)',
           height: 'clamp(28px, 4vw, 48px)',
@@ -93,7 +93,7 @@ export function AboutSection() {
         ref={headlineRef}
         className="relative z-30 mb-6 md:mb-0 mx-auto md:mx-0 md:absolute md:left-[6vw] md:top-[22vh] w-[90vw] md:w-[46vw] text-center md:text-left"
       >
-        <h2 className="heading-lg text-off-white text-5xl md:text-5xl lg:text-7xl leading-tight">
+        <h2 className="heading-lg text-lab-white text-5xl md:text-5xl lg:text-7xl leading-tight">
           YOUR HAIR IN
           <br className="hidden md:block" />
           {' '}SAFE HANDS
@@ -104,16 +104,16 @@ export function AboutSection() {
         ref={bodyRef}
         className="relative z-30 mb-10 md:mb-0 mx-auto md:mx-0 md:absolute md:top-[52vh] md:left-[6vw] md:w-[40vw] max-w-[480px] text-center md:text-left"
       >
-        <p className="body-text text-off-white/90 leading-relaxed text-base">
+        <p className="body-text text-lab-white/90 leading-relaxed text-base">
           I'm Wog, your loctician based in Eccles, Salford. I do neat, long-lasting
           braids and loc styles that protect your hair and keep you looking fresh.
         </p>
-        <p className="body-text text-off-white/90 leading-relaxed mt-4 text-base">
+        <p className="body-text text-lab-white/90 leading-relaxed mt-4 text-base">
           Every style is done with care and attention. Your hair's health always comes first.
         </p>
         <a
           href="#portfolio"
-          className="inline-flex items-center justify-center md:justify-start gap-2 mt-6 font-display font-bold text-acid-lime uppercase tracking-wide hover:underline"
+          className="inline-flex items-center justify-center md:justify-start gap-2 mt-6 font-display font-bold text-neon-pink uppercase tracking-wide hover:underline"
         >
           See my work
           <span>→</span>

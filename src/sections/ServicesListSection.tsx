@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { getServices } from '@/lib/supabase';
 import type { Service } from '@/lib/supabase';
 import { ClockIcon } from '@/components/Icons';
+import * as Tabs from '@radix-ui/react-tabs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,15 +15,31 @@ interface ServicesListSectionProps {
 export function ServicesListSection({ onBookClick }: ServicesListSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const ctaRef = useRef<HTMLDivElement>(null);
 
   const [services, setServices] = useState<Service[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
     async function loadServices() {
       const data = await getServices();
       setServices(data);
+      
+      const uniqueCats = Array.from(new Set(data.map((s) => s.category)));
+      // Sort categories — handles both old DB names and new names
+      const orderMap: Record<string, number> = {
+        'Hands - Short': 0, 'Short Canvas': 0,
+        'Hands - Medium': 1, 'Medium Canvas': 1,
+        'Hands - Long': 2, 'Long Canvas': 2,
+        'Toes': 3, 'Pedicures': 3,
+        'Deals': 4, 'Combos': 4,
+        'Add-ons': 5,
+      };
+      uniqueCats.sort((a, b) => {
+        const indexA = orderMap[a] ?? 99;
+        const indexB = orderMap[b] ?? 99;
+        return indexA - indexB;
+      });
+      setCategories(uniqueCats);
     }
     loadServices();
   }, []);
@@ -30,13 +47,10 @@ export function ServicesListSection({ onBookClick }: ServicesListSectionProps) {
   useEffect(() => {
     const section = sectionRef.current;
     const heading = headingRef.current;
-    const cards = cardsRef.current.filter(Boolean);
-    const cta = ctaRef.current;
 
-    if (!section || !heading || cards.length === 0) return;
+    if (!section || !heading) return;
 
     const ctx = gsap.context(() => {
-      // Heading animation
       gsap.fromTo(
         heading,
         { y: 24, opacity: 0 },
@@ -52,46 +66,6 @@ export function ServicesListSection({ onBookClick }: ServicesListSectionProps) {
           },
         }
       );
-
-      // Cards animation
-      cards.forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          { y: 40, scale: 0.98, opacity: 0 },
-          {
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            duration: 0.5,
-            ease: 'power2.out',
-            delay: index * 0.12,
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-      });
-
-      // CTA animation
-      if (cta) {
-        gsap.fromTo(
-          cta,
-          { y: 16, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.5,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: cta,
-              start: 'top 90%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-      }
     }, section);
 
     return () => ctx.revert();
@@ -101,94 +75,108 @@ export function ServicesListSection({ onBookClick }: ServicesListSectionProps) {
     <section
       id="services"
       ref={sectionRef}
-      className="relative bg-money-green py-20 md:py-32 z-[70]"
+      className="relative py-20 md:py-32 z-[70] overflow-hidden"
     >
-      <div className="w-full px-6 lg:px-12">
+      <div className="absolute inset-0 bg-obsidian z-[-2]"></div>
+      <div className="absolute top-[20%] right-[-5%] w-[400px] h-[400px] bg-neon-pink/10 rounded-full blur-[100px] pointer-events-none z-[-1]" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-neon-pink-light/5 rounded-full blur-[150px] pointer-events-none z-[-1]" />
+
+      <div className="w-full max-w-6xl mx-auto px-6 lg:px-12">
         {/* Heading */}
-        <div ref={headingRef} className="mb-12 md:mb-16">
-          <h2 className="heading-lg text-off-white mb-4">
-            STYLES FOR EVERY VIBE
+        <div ref={headingRef} className="mb-12 md:mb-16 text-center">
+          <h2 className="heading-lg text-lab-white mb-4">
+            Prices
           </h2>
-          <p className="body-text text-off-white/80 max-w-xl">
-            From protective styles to fresh retwists—I've got you covered.
+          <p className="body-text text-lab-white/70 max-w-2xl mx-auto font-light">
+            Pick your set and book below
           </p>
         </div>
 
-        {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              ref={(el) => { cardsRef.current[index] = el; }}
-              className="bg-off-white border-2 border-near-black p-6 md:p-8"
-              style={{ boxShadow: '0 8px 0 rgba(0,0,0,0.15)' }}
-            >
-              <h3 className="font-display font-black text-xl md:text-2xl uppercase text-near-black mb-3">
-                {service.name}
-              </h3>
-              <p className="text-near-black/70 text-sm md:text-base mb-4">
-                {service.description}
-              </p>
-
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-2 text-near-black/60">
-                  <ClockIcon size={16} />
-                  <span className="text-sm">{service.duration}</span>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t-2 border-near-black/10">
-                <div>
-                  <span className="text-xs uppercase text-near-black/50 font-display font-bold">From</span>
-                  <p className="font-display font-black text-2xl text-near-black">
-                    £{service.price_from}
-                  </p>
-                </div>
-                <button
-                  onClick={() => onBookClick(service.name)}
-                  className="bg-money-green text-off-white font-display font-bold uppercase text-sm px-5 py-2.5 border-2 border-near-black hover:bg-money-green/90 transition-colors"
+        {/* Tabs for Categories */}
+        {categories.length > 0 ? (
+          <Tabs.Root defaultValue={categories[0]} className="w-full flex flex-col items-center">
+            <Tabs.List className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12 w-full">
+              {categories.map((cat) => (
+                <Tabs.Trigger
+                  key={cat}
+                  value={cat}
+                  className="px-6 py-3 font-heading font-semibold text-sm md:text-base uppercase tracking-wider rounded-full border border-metallic-silver/30 text-lab-white/70 data-[state=active]:bg-neon-pink data-[state=active]:text-lab-white data-[state=active]:border-neon-pink data-[state=active]:shadow-[0_0_15px_rgba(255,0,127,0.4)] transition-all hover:bg-white/5"
                 >
-                  Book
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+                  {cat}
+                </Tabs.Trigger>
+              ))}
+            </Tabs.List>
+
+            {categories.map((cat) => (
+              <Tabs.Content key={cat} value={cat} className="w-full outline-none animate-in fade-in duration-500">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 stagger-children">
+                  {services
+                    .filter((s) => s.category === cat)
+                    .filter((s, i, arr) => arr.findIndex(x => x.name === s.name) === i)
+                    .map((service) => (
+                      <div
+                        key={service.id}
+                        className="glass-card p-6 md:p-8 flex flex-col hover-lift"
+                      >
+                        <h3 className="font-display font-bold text-2xl uppercase text-lab-white mb-3">
+                          {service.name}
+                        </h3>
+                        <p className="text-lab-white/60 text-sm md:text-base mb-6 font-light flex-grow">
+                          {service.description}
+                        </p>
+
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="flex items-center gap-2 text-neon-pink">
+                            <ClockIcon size={18} />
+                            <span className="text-sm font-medium">{service.duration}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-6 border-t border-white/10 mt-auto">
+                          <div>
+                            <p className="font-display font-bold text-3xl text-lab-white">
+                              £{service.price_from}
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => onBookClick(service.name)}
+                            className="bg-neon-pink text-lab-white font-heading font-semibold uppercase text-xs px-6 py-3 rounded-full hover:bg-neon-pink-light shadow-[0_0_10px_rgba(255,0,127,0.3)] transition-all press-feedback"
+                          >
+                            Book
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </Tabs.Content>
+            ))}
+          </Tabs.Root>
+        ) : (
+          <div className="text-center py-20 text-lab-white/50 animate-pulse">
+            Loading services...
+          </div>
+        )}
 
         {/* Additional Info Card */}
         <div
-          ref={(el) => { cardsRef.current[services.length] = el; }}
-          className="mt-8 bg-acid-lime border-2 border-near-black p-6 md:p-8"
-          style={{ boxShadow: '0 8px 0 rgba(0,0,0,0.15)' }}
+          className="mt-16 glass-card p-8 md:p-12 relative overflow-hidden text-center max-w-4xl mx-auto border-neon-pink/30"
         >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h3 className="font-display font-black text-lg uppercase text-near-black mb-2">
-                Not sure what you need?
-              </h3>
-              <p className="text-near-black/70 text-sm md:text-base">
-                DM me a photo and I'll recommend the best fit for your hair.
-              </p>
-            </div>
-            <a
-              href="https://instagram.com/locsbywog"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-near-black text-acid-lime font-display font-bold uppercase text-sm px-6 py-3 border-2 border-near-black hover:bg-near-black/90 transition-colors text-center whitespace-nowrap"
-            >
-              DM on Instagram
-            </a>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div ref={ctaRef} className="mt-12 md:mt-16 text-center">
-          <button onClick={() => onBookClick()} className="btn-primary">
-            Book Your Appointment
-          </button>
-          <p className="micro-label text-off-white/60 mt-4">
-            £10 deposit + £1 processing fee required to secure your slot
+           <div className="absolute top-0 right-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[20deg] animate-[float_6s_infinite_linear]" />
+           
+          <h3 className="font-display font-bold text-2xl md:text-3xl uppercase text-lab-white mb-4">
+            Not Sure What To Get?
+          </h3>
+          <p className="text-lab-white/70 text-lg mb-8 font-light max-w-xl mx-auto">
+            Send me a pic of what you want on Instagram and I'll let you know the price
           </p>
+          <a
+            href="https://instagram.com/thenailscientizt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary inline-block"
+          >
+            DM Me
+          </a>
         </div>
       </div>
     </section>

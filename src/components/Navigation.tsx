@@ -34,8 +34,8 @@ export function Navigation({ onBookClick }: NavigationProps) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled
-          ? 'bg-money-green/95 backdrop-blur-sm py-3 shadow-md'
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b border-transparent ${isScrolled
+          ? 'bg-obsidian/80 backdrop-blur-xl border-metallic-silver/20 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.5)]'
           : 'bg-transparent py-6'
           }`}
       >
@@ -43,12 +43,12 @@ export function Navigation({ onBookClick }: NavigationProps) {
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
-            className="hover:rotate-[-2deg] hover:scale-105 transition-transform duration-300"
+            className="group flex flex-col items-start transition-transform duration-300 hover:scale-[1.02]"
           >
             <img
-              src="/images/locsbywogggg.png"
-              alt="LocsByWog Logo"
-              className="h-10 md:h-12 w-auto object-contain"
+              src="/images/thenailscientizt.png"
+              alt="The Nail Scientizt Logo"
+              className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,0,127,0.3)]"
             />
           </button>
 
@@ -56,40 +56,40 @@ export function Navigation({ onBookClick }: NavigationProps) {
           <div className="hidden md:flex items-center gap-8">
             <button
               onClick={() => scrollToSection('portfolio')}
-              className="font-display font-bold text-sm uppercase tracking-wide text-off-white/80 hover:text-off-white transition-colors"
+              className="font-heading font-semibold text-sm uppercase tracking-wider text-lab-white/70 hover:text-neon-pink transition-all hover:scale-105"
             >
-              Work
+              My Work
             </button>
             <button
               onClick={() => scrollToSection('services')}
-              className="font-display font-bold text-sm uppercase tracking-wide text-off-white/80 hover:text-off-white transition-colors"
+              className="font-heading font-semibold text-sm uppercase tracking-wider text-lab-white/70 hover:text-neon-pink transition-all hover:scale-105"
             >
-              Services
+              Prices
             </button>
             <button
               onClick={() => scrollToSection('testimonials')}
-              className="font-display font-bold text-sm uppercase tracking-wide text-off-white/80 hover:text-off-white transition-colors"
+              className="font-heading font-semibold text-sm uppercase tracking-wider text-lab-white/70 hover:text-neon-pink transition-all hover:scale-105"
             >
               Reviews
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="font-display font-bold text-sm uppercase tracking-wide text-off-white/80 hover:text-off-white transition-colors"
+              className="font-heading font-semibold text-sm uppercase tracking-wider text-lab-white/70 hover:text-neon-pink transition-all hover:scale-105"
             >
               Contact
             </button>
             <button
               onClick={onBookClick}
-              className="bg-acid-lime text-near-black font-display font-black text-sm uppercase px-5 py-2.5 border-2 border-near-black hover:-translate-y-0.5 hover:scale-[1.02] transition-transform"
+              className="btn-primary text-sm px-6 py-2.5 rounded-full animate-pulse-glow press-feedback"
             >
-              Book
+              Book Now
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-off-white p-2"
+            className="md:hidden text-lab-white p-2"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -98,31 +98,31 @@ export function Navigation({ onBookClick }: NavigationProps) {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[90] bg-money-green transition-transform duration-300 md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 z-[90] bg-obsidian/95 backdrop-blur-xl transition-transform duration-300 md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8">
           <button
             onClick={() => scrollToSection('portfolio')}
-            className="font-display font-black text-3xl uppercase text-off-white hover:text-acid-lime transition-colors"
+            className="font-display text-4xl text-lab-white hover:text-neon-pink transition-colors"
           >
-            Work
+            My Work
           </button>
           <button
             onClick={() => scrollToSection('services')}
-            className="font-display font-black text-3xl uppercase text-off-white hover:text-acid-lime transition-colors"
+            className="font-display text-4xl text-lab-white hover:text-neon-pink transition-colors"
           >
-            Services
+            Prices
           </button>
           <button
             onClick={() => scrollToSection('testimonials')}
-            className="font-display font-black text-3xl uppercase text-off-white hover:text-acid-lime transition-colors"
+            className="font-display text-4xl text-lab-white hover:text-neon-pink transition-colors"
           >
             Reviews
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className="font-display font-black text-3xl uppercase text-off-white hover:text-acid-lime transition-colors"
+            className="font-display text-4xl text-lab-white hover:text-neon-pink transition-colors"
           >
             Contact
           </button>
@@ -131,7 +131,7 @@ export function Navigation({ onBookClick }: NavigationProps) {
               setIsMenuOpen(false);
               onBookClick();
             }}
-            className="mt-4 bg-acid-lime text-near-black font-display font-black text-xl uppercase px-8 py-4 border-2 border-near-black"
+            className="mt-8 btn-primary text-xl px-10 py-4 animate-pulse-glow press-feedback"
           >
             Book Now
           </button>

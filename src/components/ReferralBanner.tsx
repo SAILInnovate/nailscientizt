@@ -12,7 +12,7 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
 
     useEffect(() => {
         // Check if user has dismissed the banner before
-        const dismissed = sessionStorage.getItem('locsbywog_banner_dismissed');
+        const dismissed = sessionStorage.getItem('thenailscientizt_banner_dismissed');
         if (dismissed) {
             setIsDismissed(true);
             return;
@@ -27,7 +27,7 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
         setIsVisible(false);
         setTimeout(() => {
             setIsDismissed(true);
-            sessionStorage.setItem('locsbywog_banner_dismissed', 'true');
+            sessionStorage.setItem('thenailscientizt_banner_dismissed', 'true');
         }, 400);
     };
 
@@ -40,19 +40,19 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
                 }`}
         >
             {/* Main Banner */}
-            <div className="relative overflow-hidden bg-gradient-to-r from-near-black via-[#1a1a2e] to-near-black border-b-2 border-acid-lime/30">
+            <div className="relative overflow-hidden bg-gradient-to-r from-obsidian via-[#1a1a2e] to-obsidian border-b-2 border-neon-pink/30">
                 {/* Animated Background Shimmer */}
                 <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-acid-lime/20 to-transparent animate-shimmer" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-neon-pink/20 to-transparent animate-shimmer" />
                 </div>
 
                 {/* Particle dots */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-1 left-[10%] w-1 h-1 bg-acid-lime rounded-full animate-pulse" />
-                    <div className="absolute top-2 left-[30%] w-0.5 h-0.5 bg-acid-lime/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-                    <div className="absolute top-1 right-[20%] w-1 h-1 bg-acid-lime/80 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-                    <div className="absolute bottom-1 left-[50%] w-0.5 h-0.5 bg-acid-lime/40 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }} />
-                    <div className="absolute top-2 right-[40%] w-0.5 h-0.5 bg-acid-lime/50 rounded-full animate-pulse" style={{ animationDelay: '0.8s' }} />
+                    <div className="absolute top-1 left-[10%] w-1 h-1 bg-neon-pink rounded-full animate-pulse" />
+                    <div className="absolute top-2 left-[30%] w-0.5 h-0.5 bg-neon-pink/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+                    <div className="absolute top-1 right-[20%] w-1 h-1 bg-neon-pink/80 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+                    <div className="absolute bottom-1 left-[50%] w-0.5 h-0.5 bg-neon-pink/40 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }} />
+                    <div className="absolute top-2 right-[40%] w-0.5 h-0.5 bg-neon-pink/50 rounded-full animate-pulse" style={{ animationDelay: '0.8s' }} />
                 </div>
 
                 <div className="relative px-4 py-2.5 md:py-3 flex items-center justify-center gap-2 md:gap-4">
@@ -61,25 +61,25 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
 
 
                         <div className="flex items-center gap-1.5 md:gap-3 text-center">
-                            <span className="text-off-white font-display font-bold text-[11px] md:text-sm uppercase tracking-wider">
+                            <span className="text-lab-white font-display font-bold text-[11px] md:text-sm uppercase tracking-wider">
                                 <span className="hidden md:inline">🔥 </span>
                                 Got a code?
                             </span>
 
-                            <span className="text-acid-lime font-display font-black text-xs md:text-base uppercase">
+                            <span className="text-neon-pink font-display font-black text-xs md:text-base uppercase">
                                 Save £10
                             </span>
 
-                            <span className="hidden sm:inline text-off-white/60 text-xs">•</span>
+                            <span className="hidden sm:inline text-lab-white/60 text-xs">•</span>
 
-                            <span className="hidden sm:inline text-off-white/70 text-[11px] md:text-sm">
+                            <span className="hidden sm:inline text-lab-white/70 text-[11px] md:text-sm">
                                 Enter at checkout
                             </span>
                         </div>
 
                         <button
                             onClick={onBookClick}
-                            className="ml-1 md:ml-2 bg-acid-lime text-near-black font-display font-black text-[10px] md:text-xs uppercase px-3 md:px-4 py-1.5 md:py-2 border border-near-black hover:scale-105 active:scale-95 transition-transform whitespace-nowrap"
+                            className="ml-1 md:ml-2 bg-neon-pink text-obsidian font-display font-black text-[10px] md:text-xs uppercase px-3 md:px-4 py-1.5 md:py-2 border border-obsidian hover:scale-105 active:scale-95 transition-transform whitespace-nowrap"
                         >
                             Book Now
                         </button>
@@ -88,7 +88,7 @@ export function ReferralBanner({ onBookClick }: ReferralBannerProps) {
                     {/* Dismiss */}
                     <button
                         onClick={handleDismiss}
-                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-off-white/40 hover:text-off-white transition-colors p-1"
+                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-lab-white/40 hover:text-lab-white transition-colors p-1"
                         aria-label="Dismiss banner"
                     >
                         <X size={16} />
@@ -112,7 +112,7 @@ export function ReferralShareWidget({ code }: ReferralShareProps) {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = async () => {
-        const shareText = `Yo bro, use my code "${code}" on locsbywog.com and save £10 on your first booking! 🔥💈`;
+        const shareText = `Use my code "${code}" at thenailscientizt.com and save £10 on your first booking! 🧪💅`;
         try {
             await navigator.clipboard.writeText(shareText);
             setCopied(true);
@@ -132,44 +132,44 @@ export function ReferralShareWidget({ code }: ReferralShareProps) {
 
     const handleShareWhatsApp = () => {
         const text = encodeURIComponent(
-            `Yo bro, use my code "${code}" on locsbywog.com and save £10 on your booking! 🔥💈 Book here: https://locsbywog.com`
+            `Use my code "${code}" on thenailscientizt.com and save £10 on your booking! 🧪💅 Book here: https://thenailscientizt.com`
         );
         window.open(`https://wa.me/?text=${text}`, '_blank');
     };
 
     const handleShareSMS = () => {
         const text = encodeURIComponent(
-            `Use my code "${code}" on locsbywog.com and save £10! Book here: https://locsbywog.com`
+            `Use my code "${code}" on thenailscientizt.com and save £10! Book here: https://thenailscientizt.com`
         );
         window.open(`sms:?body=${text}`, '_blank');
     };
 
     return (
-        <div className="bg-gradient-to-br from-near-black to-[#1a1a2e] border-2 border-acid-lime/30 rounded-2xl p-5 md:p-6 mt-4">
+        <div className="bg-gradient-to-br from-obsidian to-[#1a1a2e] border-2 border-neon-pink/30 rounded-2xl p-5 md:p-6 mt-4">
             {/* Header */}
             <div className="flex items-center gap-2 mb-3">
-                <Users size={18} className="text-acid-lime" />
-                <p className="font-display font-black uppercase text-sm text-acid-lime tracking-wider">
+                <Users size={18} className="text-neon-pink" />
+                <p className="font-display font-black uppercase text-sm text-neon-pink tracking-wider">
                     Your Referral Code
                 </p>
             </div>
 
-            <p className="text-off-white/70 text-sm mb-4 leading-relaxed">
-                Share this with your mandem — when they use it at checkout, they save <span className="text-acid-lime font-bold">£10</span>. More bookings = more love. 🤝
+            <p className="text-lab-white/70 text-sm mb-4 leading-relaxed">
+                Share this code with your friends — when they use it at checkout, they save <span className="text-neon-pink font-bold">£10</span>. 🤝
             </p>
 
             {/* Code Display */}
-            <div className="bg-off-white/5 border-2 border-dashed border-acid-lime/40 rounded-xl p-4 flex items-center justify-between gap-3 mb-4">
+            <div className="bg-lab-white/5 border-2 border-dashed border-neon-pink/40 rounded-xl p-4 flex items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-2xl md:text-3xl text-acid-lime tracking-[0.15em]">
+                    <span className="font-mono font-bold text-2xl md:text-3xl text-neon-pink tracking-[0.15em]">
                         {code}
                     </span>
                 </div>
                 <button
                     onClick={handleCopy}
                     className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold uppercase transition-all ${copied
-                        ? 'bg-acid-lime text-near-black'
-                        : 'bg-off-white/10 text-off-white hover:bg-off-white/20'
+                        ? 'bg-neon-pink text-obsidian'
+                        : 'bg-lab-white/10 text-lab-white hover:bg-lab-white/20'
                         }`}
                 >
                     {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -190,7 +190,7 @@ export function ReferralShareWidget({ code }: ReferralShareProps) {
                 </button>
                 <button
                     onClick={handleShareSMS}
-                    className="flex items-center justify-center gap-2 bg-off-white/10 text-off-white font-display font-bold text-xs uppercase py-3 rounded-xl hover:bg-off-white/20 hover:scale-[1.02] active:scale-95 transition-transform"
+                    className="flex items-center justify-center gap-2 bg-lab-white/10 text-lab-white font-display font-bold text-xs uppercase py-3 rounded-xl hover:bg-lab-white/20 hover:scale-[1.02] active:scale-95 transition-transform"
                 >
                     💬 Text a Friend
                 </button>

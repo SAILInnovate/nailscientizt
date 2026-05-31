@@ -81,7 +81,7 @@ export function HeroSection({ onBookClick }: HeroSectionProps) {
     <section
       ref={sectionRef}
       id="hero"
-      className="bg-money-green relative w-full overflow-hidden flex flex-col items-center justify-center pt-24 pb-12 px-6 min-h-[90svh] md:min-h-screen md:block md:section-pinned z-10"
+      className="bg-obsidian relative w-full overflow-hidden flex flex-col items-center justify-center pt-24 pb-12 px-6 min-h-[90svh] md:min-h-screen md:block md:section-pinned z-10"
     >
       {/* Logo Sticker - Top Left */}
       <div
@@ -101,7 +101,7 @@ export function HeroSection({ onBookClick }: HeroSectionProps) {
         ref={heroImageRef}
         className="relative z-30 mx-auto w-full flex justify-center md:block md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
       >
-        <div className="image-frame overflow-hidden bg-off-white w-[90vw] md:w-[50vw] max-w-[500px]">
+        <div className="image-frame overflow-hidden bg-lab-white w-[90vw] md:w-[50vw] max-w-[500px]">
           <img
             src="/images/55764726-E9FA-4DD5-BE69-6E0EF95080E7.jpeg"
             alt="Beautiful locs by LocsByWog"
@@ -117,10 +117,10 @@ export function HeroSection({ onBookClick }: HeroSectionProps) {
         className="relative z-50 mt-8 mx-auto text-center md:absolute md:mt-0 md:bottom-auto md:right-auto md:left-[62vw] md:top-[66vh]"
         style={{ transform: 'rotate(4deg)' }}
       >
-        <button onClick={onBookClick} className="sticker-lime text-near-black cursor-pointer hover:scale-105 transition-transform">
+        <button onClick={onBookClick} className="sticker-lime text-obsidian cursor-pointer hover:scale-105 transition-transform">
           <span className="text-base md:text-xl">Book now</span>
         </button>
-        <p className="micro-label text-off-white/80 mt-2 md:mt-3 text-center text-xs md:text-sm">
+        <p className="micro-label text-lab-white/80 mt-2 md:mt-3 text-center text-xs md:text-sm">
           Eccles, Salford<br className="md:hidden" /> · M30 7PL
         </p>
       </div>
@@ -128,7 +128,7 @@ export function HeroSection({ onBookClick }: HeroSectionProps) {
       {/* Star Icon - Top Right */}
       <StarIcon
         ref={starRef}
-        className="absolute text-acid-lime z-40 top-24 right-4 md:left-[82vw] md:top-[12vh] md:right-auto"
+        className="absolute text-neon-pink z-40 top-24 right-4 md:left-[82vw] md:top-[12vh] md:right-auto"
         style={{
           width: 'clamp(32px, 5vw, 56px)',
           height: 'clamp(32px, 5vw, 56px)',
@@ -138,7 +138,7 @@ export function HeroSection({ onBookClick }: HeroSectionProps) {
       {/* Sparkle Icon - Bottom Left */}
       <SparkleIcon
         ref={sparkleRef}
-        className="absolute text-acid-lime z-40 bottom-24 left-4 md:left-[10vw] md:top-[72vh] md:bottom-auto"
+        className="absolute text-neon-pink z-40 bottom-24 left-4 md:left-[10vw] md:top-[72vh] md:bottom-auto"
         style={{
           width: 'clamp(32px, 5vw, 56px)',
           height: 'clamp(32px, 5vw, 56px)',

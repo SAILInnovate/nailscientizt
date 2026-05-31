@@ -54,7 +54,7 @@ serve(async (req) => {
             price_data: {
               currency: "gbp",
               product_data: {
-                name: `${service_name || "Locks By Wog Booking"}`,
+                name: `${service_name || "The Nail Scientizt Booking"}`,
                 description: "Payment to secure your slot.",
               },
               unit_amount: Math.round(Number(total_price) * 100),

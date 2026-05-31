@@ -82,7 +82,7 @@ export function TestimonialsSection() {
       {/* Sparkle Icon */}
       <SparkleIcon
         ref={sparkleRef}
-        className="absolute text-near-black z-40 hidden md:block md:left-[90vw] md:top-[12vh]"
+        className="absolute text-neon-pink/40 z-40 hidden md:block md:left-[90vw] md:top-[12vh]"
         style={{
           width: 'clamp(28px, 4vw, 48px)',
           height: 'clamp(28px, 4vw, 48px)',
@@ -94,10 +94,10 @@ export function TestimonialsSection() {
         ref={portraitRef}
         className="relative z-20 mx-auto mb-10 md:mb-0 md:absolute md:left-[6vw] md:top-[18vh] w-[80vw] md:w-[40vw] max-w-[440px]"
       >
-        <div className="image-frame overflow-hidden border-near-black">
+        <div className="image-frame overflow-hidden border-obsidian">
           <img
-            src="/images/F0100147-6D85-46E0-869E-030A0181C118.jpeg"
-            alt="Happy client"
+            src="/images/nailsscientizt2.jpg"
+            alt="Nail set by The Nail Scientizt"
             className="w-full h-auto object-cover opacity-90"
             style={{ aspectRatio: '3/4' }}
           />
@@ -109,10 +109,10 @@ export function TestimonialsSection() {
         ref={headlineRef}
         className="relative z-30 mx-auto md:mx-0 md:absolute md:left-[52vw] md:top-[26vh] w-[90vw] md:w-[42vw] text-center md:text-left mb-6 md:mb-0"
       >
-        <h2 className="heading-lg text-near-black text-5xl md:text-5xl lg:text-7xl leading-tight">
-          LOVED BY
+        <h2 className="heading-lg text-obsidian text-5xl md:text-5xl lg:text-7xl leading-tight">
+          WHAT MY
           <br className="hidden md:block" />
-          {' '}THE CITY
+          {' '}CLIENTS SAY
         </h2>
       </div>
 
@@ -120,12 +120,12 @@ export function TestimonialsSection() {
         ref={quoteRef}
         className="relative z-30 mx-auto md:mx-0 md:absolute md:top-[46vh] md:left-[52vw] w-[90vw] md:w-[40vw] max-w-[460px] text-center md:text-left"
       >
-        <blockquote className="text-lg md:text-xl text-near-black/90 leading-relaxed italic">
-          "Wog is the only person I trust with my hair. Always neat, always on time,
-          and my braids last for weeks. The attention to detail is unmatched!"
+        <blockquote className="text-lg md:text-xl text-obsidian/90 leading-relaxed italic">
+          "Aishabel is the only person I trust with my nails. Always neat, always on time,
+          and my sets last for weeks. The attention to detail is unmatched!"
         </blockquote>
-        <p className="mt-6 md:mt-6 font-display font-bold text-near-black uppercase tracking-wide text-sm">
-          — Tasha, Manchester
+        <p className="mt-6 md:mt-6 font-display font-bold text-obsidian uppercase tracking-wide text-sm">
+          — Keisha, Manchester
         </p>
 
         {/* Rating Stars */}
@@ -136,7 +136,7 @@ export function TestimonialsSection() {
               width="20"
               height="20"
               viewBox="0 0 20 20"
-              fill="#111111"
+              fill="#FF007F"
             >
               <path d="M10 0L12.5 7.5L20 7.5L14 12L16.5 20L10 15L3.5 20L6 12L0 7.5L7.5 7.5L10 0Z" />
             </svg>

@@ -24,7 +24,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 330 100% 50%;
     --radius: 0.625rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -55,7 +55,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --ring: 330 100% 50%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -76,29 +76,79 @@
   }
   
   body {
-    @apply bg-money-green text-off-white font-body antialiased;
+    @apply bg-obsidian text-lab-white font-body antialiased;
     overflow-x: hidden;
+    /* Soft pink radial gradient as ambient background light */
+    background-image: radial-gradient(circle at 50% 0%, rgba(255, 0, 127, 0.15), transparent 60%);
+    background-attachment: fixed;
+  }
+  
+  /* Override default browser focus outline color globally */
+  *:focus-visible {
+    outline-color: #FF007F !important;
+  }
+  
+  *:focus {
+    outline-color: #FF007F !important;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-black tracking-tight;
+    @apply font-display font-medium tracking-tight;
+  }
+  
+  /* Custom Scrollbar for Webkit */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #0D0D0D;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 0, 127, 0.4);
+    border-radius: 9999px;
+    border: 2px solid #0D0D0D;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 0, 127, 0.7);
+  }
+  
+  /* Custom Scrollbar for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 0, 127, 0.4) #0D0D0D;
   }
 }
 
 @layer components {
+  /* Glassmorphism Panel */
+  .glass-panel {
+    @apply bg-obsidian/40 backdrop-blur-xl border border-metallic-silver/20 rounded-2xl shadow-2xl;
+  }
+  
+  .glass-card {
+    @apply bg-obsidian/60 backdrop-blur-md border border-white/10 rounded-xl transition-all duration-300;
+  }
+  
+  .glass-card:hover {
+    @apply border-neon-pink/40 shadow-[0_0_20px_rgba(255,0,127,0.15)];
+  }
+
   .sticker {
-    @apply bg-off-white border-2 border-near-black px-6 py-3 font-display font-black uppercase;
-    box-shadow: 0 18px 0 rgba(0,0,0,0.18);
+    @apply bg-obsidian/80 backdrop-blur-sm border border-neon-pink/50 text-lab-white px-6 py-3 font-heading font-bold uppercase rounded-full shadow-[0_0_15px_rgba(255,0,127,0.2)];
   }
   
   .sticker-lime {
-    @apply bg-acid-lime border-2 border-near-black px-6 py-3 font-display font-black uppercase;
-    box-shadow: 0 18px 0 rgba(0,0,0,0.18);
+    @apply bg-neon-pink text-lab-white border border-neon-pink-light px-6 py-3 font-heading font-bold uppercase rounded-full shadow-[0_0_20px_rgba(255,0,127,0.4)];
   }
   
   .image-frame {
-    @apply border-2 border-near-black;
-    box-shadow: 0 8px 0 rgba(0,0,0,0.15);
+    @apply border border-metallic-silver/30 rounded-lg overflow-hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
   
   .grain-overlay {
@@ -109,7 +159,7 @@
     height: 100%;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.04;
+    opacity: 0.03;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
@@ -119,35 +169,35 @@
   }
   
   .heading-xl {
-    @apply text-5xl md:text-7xl lg:text-8xl font-display font-black uppercase leading-[0.88] tracking-[-0.02em];
+    @apply text-5xl md:text-7xl lg:text-8xl font-display leading-[1.1] tracking-normal;
   }
   
   .heading-lg {
-    @apply text-4xl md:text-5xl lg:text-6xl font-display font-black uppercase leading-[0.9] tracking-[-0.02em];
+    @apply text-4xl md:text-5xl lg:text-6xl font-display leading-[1.1] tracking-normal;
   }
   
   .body-text {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base md:text-lg leading-relaxed text-lab-white/80;
   }
   
   .micro-label {
-    @apply font-mono text-xs uppercase tracking-[0.12em];
+    @apply font-heading text-xs uppercase tracking-[0.15em] text-metallic-silver;
   }
   
   .btn-primary {
-    @apply bg-acid-lime text-near-black font-display font-black uppercase px-8 py-4 border-2 border-near-black transition-transform duration-200;
+    @apply bg-neon-pink text-lab-white font-heading font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(255,0,127,0.4)];
   }
   
   .btn-primary:hover {
-    @apply -translate-y-0.5 scale-[1.02];
+    @apply bg-neon-pink-light shadow-[0_0_25px_rgba(255,20,147,0.6)] scale-[1.02];
   }
   
   .btn-secondary {
-    @apply bg-off-white text-near-black font-display font-black uppercase px-8 py-4 border-2 border-near-black transition-transform duration-200;
+    @apply bg-transparent text-lab-white border border-metallic-silver/40 font-heading font-semibold px-8 py-4 rounded-full transition-all duration-300;
   }
   
   .btn-secondary:hover {
-    @apply -translate-y-0.5 scale-[1.02];
+    @apply border-lab-white bg-white/5 scale-[1.02];
   }
 }
 
@@ -155,4 +205,179 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ===== MICRO-ANIMATIONS ===== */
+
+/* Fade in from below */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in from above */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scale in with bounce */
+@keyframes scaleIn {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Subtle pulse glow for CTAs */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 127, 0.4); }
+  50%      { box-shadow: 0 0 30px rgba(255, 0, 127, 0.7), 0 0 60px rgba(255, 0, 127, 0.2); }
+}
+
+/* Shimmer shine sweep */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Gentle wiggle */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%  { transform: rotate(-2deg); }
+  75%  { transform: rotate(2deg); }
+}
+
+/* Heartbeat for icons */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.15); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.1); }
+}
+
+/* Staggered fade for children */
+@keyframes staggerFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== ANIMATION UTILITY CLASSES ===== */
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.4s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out both;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.4s ease-in-out;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.2s ease-in-out;
+}
+
+/* Shimmer shine overlay — add to parent with overflow-hidden & position-relative */
+.shimmer-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Staggered children — apply to parent, children auto-stagger */
+.stagger-children > * {
+  opacity: 0;
+  animation: staggerFadeIn 0.4s ease-out forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 360ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 420ms; }
+.stagger-children > *:nth-child(9) { animation-delay: 480ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 540ms; }
+
+/* Card hover lift — adds a smooth lift + glow on hover */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 0, 127, 0.15);
+}
+
+/* Button press feedback */
+.press-feedback {
+  transition: transform 0.15s ease;
+}
+.press-feedback:active {
+  transform: scale(0.96);
+}
+
+/* Booking modal step transition */
+.animation-fade-in {
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+/* Smooth page section entrance (for JS intersection observer) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pink dot pulse — for live status indicators */
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.8); }
+}
+.dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF007F;
+  animation: dotPulse 2s ease-in-out infinite;
 }

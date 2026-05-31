@@ -162,17 +162,17 @@ export function AdminPage() {
     // --- LOGIN SCREEN ---
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen bg-near-black flex items-center justify-center p-6">
-                <div className="bg-off-white rounded-2xl p-8 max-w-sm w-full shadow-2xl border-2 border-near-black">
+            <div className="min-h-screen bg-obsidian flex items-center justify-center p-6">
+                <div className="bg-lab-white rounded-2xl p-8 max-w-sm w-full shadow-2xl border-2 border-obsidian">
                     <div className="flex justify-center mb-6">
-                        <div className="w-16 h-16 rounded-full bg-money-green flex items-center justify-center">
-                            <Lock className="text-off-white" size={28} />
+                        <div className="w-16 h-16 rounded-full bg-obsidian flex items-center justify-center">
+                            <Lock className="text-lab-white" size={28} />
                         </div>
                     </div>
-                    <h1 className="font-display font-black text-2xl uppercase text-center text-near-black mb-2">
+                    <h1 className="font-display font-black text-2xl uppercase text-center text-obsidian mb-2">
                         Admin Access
                     </h1>
-                    <p className="text-center text-near-black/60 text-sm mb-6">
+                    <p className="text-center text-obsidian/60 text-sm mb-6">
                         Enter the password to manage your availability.
                     </p>
                     <form onSubmit={handleLogin}>
@@ -181,7 +181,7 @@ export function AdminPage() {
                             value={passwordInput}
                             onChange={(e) => setPasswordInput(e.target.value)}
                             placeholder="Password"
-                            className="w-full px-4 py-3 rounded-xl border-2 border-near-black/20 bg-white text-near-black placeholder:text-near-black/40 focus:outline-none focus:border-money-green transition-colors text-center text-lg tracking-wider"
+                            className="w-full px-4 py-3 rounded-xl border-2 border-obsidian/20 bg-white text-obsidian placeholder:text-obsidian/40 focus:outline-none focus:border-obsidian transition-colors text-center text-lg tracking-wider"
                             autoFocus
                         />
                         {passwordError && (
@@ -189,12 +189,12 @@ export function AdminPage() {
                         )}
                         <button
                             type="submit"
-                            className="w-full mt-4 bg-money-green text-off-white font-display font-bold uppercase py-3 rounded-xl hover:bg-money-green/90 transition-colors text-lg tracking-wider"
+                            className="w-full mt-4 bg-obsidian text-lab-white font-display font-bold uppercase py-3 rounded-xl hover:bg-obsidian/90 transition-colors text-lg tracking-wider"
                         >
                             Log In
                         </button>
                     </form>
-                    <a href="/" className="block text-center text-near-black/40 text-xs mt-6 hover:text-near-black/60 transition-colors">
+                    <a href="/" className="block text-center text-obsidian/40 text-xs mt-6 hover:text-obsidian/60 transition-colors">
                         ← Back to website
                     </a>
                 </div>
@@ -209,21 +209,21 @@ export function AdminPage() {
         (currentMonth.getFullYear() === new Date().getFullYear() && currentMonth.getMonth() <= new Date().getMonth());
 
     return (
-        <div className="min-h-screen bg-near-black text-off-white">
+        <div className="min-h-screen bg-obsidian text-lab-white">
             {/* Header */}
-            <div className="bg-money-green border-b-2 border-near-black">
+            <div className="bg-obsidian border-b-2 border-obsidian">
                 <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <ShieldCheck size={20} className="text-acid-lime" />
+                        <ShieldCheck size={20} className="text-neon-pink" />
                         <h1 className="font-display font-black text-lg sm:text-xl uppercase tracking-wider">Admin</h1>
                     </div>
                     <div className="flex items-center gap-2 sm:gap-4">
-                        <a href="/" className="text-off-white/70 hover:text-off-white text-xs sm:text-sm transition-colors">
+                        <a href="/" className="text-lab-white/70 hover:text-lab-white text-xs sm:text-sm transition-colors">
                             ← Site
                         </a>
                         <button
                             onClick={() => setIsAuthenticated(false)}
-                            className="flex items-center gap-1 sm:gap-2 text-off-white/70 hover:text-off-white text-xs sm:text-sm transition-colors"
+                            className="flex items-center gap-1 sm:gap-2 text-lab-white/70 hover:text-lab-white text-xs sm:text-sm transition-colors"
                         >
                             <LogOut size={16} />
                             Log out
@@ -237,15 +237,15 @@ export function AdminPage() {
                 <div className="flex flex-wrap gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm">
                     <div className="flex items-center gap-2">
                         <div className="w-4 h-4 rounded bg-red-500/80"></div>
-                        <span className="text-off-white/70">Blocked</span>
+                        <span className="text-lab-white/70">Blocked</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 rounded bg-acid-lime"></div>
-                        <span className="text-off-white/70">Has bookings</span>
+                        <div className="w-4 h-4 rounded bg-neon-pink"></div>
+                        <span className="text-lab-white/70">Has bookings</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 rounded bg-off-white/20"></div>
-                        <span className="text-off-white/70">Available</span>
+                        <div className="w-4 h-4 rounded bg-lab-white/20"></div>
+                        <span className="text-lab-white/70">Available</span>
                     </div>
                 </div>
 
@@ -254,7 +254,7 @@ export function AdminPage() {
                     <button
                         onClick={prevMonth}
                         disabled={isCurrentMonthOrPast}
-                        className={`p-2 rounded-xl transition-colors ${isCurrentMonthOrPast ? 'text-off-white/20 cursor-not-allowed' : 'bg-off-white/10 hover:bg-off-white/20 text-off-white'}`}
+                        className={`p-2 rounded-xl transition-colors ${isCurrentMonthOrPast ? 'text-lab-white/20 cursor-not-allowed' : 'bg-lab-white/10 hover:bg-lab-white/20 text-lab-white'}`}
                     >
                         <ChevronLeft size={24} />
                     </button>
@@ -263,7 +263,7 @@ export function AdminPage() {
                     </h2>
                     <button
                         onClick={nextMonth}
-                        className="p-2 rounded-xl bg-off-white/10 hover:bg-off-white/20 text-off-white transition-colors"
+                        className="p-2 rounded-xl bg-lab-white/10 hover:bg-lab-white/20 text-lab-white transition-colors"
                     >
                         <ChevronRight size={24} />
                     </button>
@@ -271,8 +271,8 @@ export function AdminPage() {
 
                 {loading ? (
                     <div className="text-center py-20">
-                        <div className="inline-block animate-spin w-8 h-8 border-4 border-off-white/30 border-t-acid-lime rounded-full"></div>
-                        <p className="mt-4 text-off-white/60">Loading calendar...</p>
+                        <div className="inline-block animate-spin w-8 h-8 border-4 border-lab-white/30 border-t-neon-pink rounded-full"></div>
+                        <p className="mt-4 text-lab-white/60">Loading calendar...</p>
                     </div>
                 ) : (
                     <>
@@ -280,7 +280,7 @@ export function AdminPage() {
                         <div className="grid grid-cols-7 gap-1 sm:gap-2 mb-8">
                             {/* Day headers */}
                             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
-                                <div key={day} className="text-center text-off-white/50 text-xs font-bold uppercase py-2">
+                                <div key={day} className="text-center text-lab-white/50 text-xs font-bold uppercase py-2">
                                     {day}
                                 </div>
                             ))}
@@ -295,33 +295,33 @@ export function AdminPage() {
                                 const isSelected = selectedDate === dayInfo.dateStr;
                                 const isActionLoading = actionLoading === dayInfo.dateStr;
 
-                                let bgClass = 'bg-off-white/5 hover:bg-off-white/15';
-                                if (dayInfo.isPast) bgClass = 'bg-off-white/[0.02] text-off-white/20 cursor-not-allowed';
+                                let bgClass = 'bg-lab-white/5 hover:bg-lab-white/15';
+                                if (dayInfo.isPast) bgClass = 'bg-lab-white/[0.02] text-lab-white/20 cursor-not-allowed';
                                 else if (dayInfo.isBlocked) bgClass = 'bg-red-500/20 border-red-500/40 hover:bg-red-500/30';
-                                else if (dayInfo.hasBookings) bgClass = 'bg-acid-lime/15 border-acid-lime/30 hover:bg-acid-lime/25';
+                                else if (dayInfo.hasBookings) bgClass = 'bg-neon-pink/15 border-neon-pink/30 hover:bg-neon-pink/25';
 
-                                if (isSelected && !dayInfo.isPast) bgClass += ' ring-2 ring-acid-lime';
+                                if (isSelected && !dayInfo.isPast) bgClass += ' ring-2 ring-neon-pink';
 
                                 return (
                                     <button
                                         key={dayInfo.dateStr}
                                         onClick={() => handleDateClick(dayInfo)}
                                         disabled={dayInfo.isPast || isActionLoading}
-                                        className={`aspect-square rounded-xl border border-off-white/10 flex flex-col items-center justify-center gap-0.5 transition-all relative ${bgClass}`}
+                                        className={`aspect-square rounded-xl border border-lab-white/10 flex flex-col items-center justify-center gap-0.5 transition-all relative ${bgClass}`}
                                     >
                                         {isActionLoading && (
-                                            <div className="absolute inset-0 flex items-center justify-center bg-near-black/50 rounded-xl">
-                                                <div className="w-4 h-4 border-2 border-off-white/30 border-t-acid-lime rounded-full animate-spin"></div>
+                                            <div className="absolute inset-0 flex items-center justify-center bg-obsidian/50 rounded-xl">
+                                                <div className="w-4 h-4 border-2 border-lab-white/30 border-t-neon-pink rounded-full animate-spin"></div>
                                             </div>
                                         )}
-                                        <span className={`text-sm sm:text-base font-bold ${dayInfo.isToday ? 'text-acid-lime' : ''}`}>
+                                        <span className={`text-sm sm:text-base font-bold ${dayInfo.isToday ? 'text-neon-pink' : ''}`}>
                                             {dayInfo.date.getDate()}
                                         </span>
                                         {dayInfo.isBlocked && !dayInfo.isPast && (
                                             <Lock size={10} className="text-red-400" />
                                         )}
                                         {dayInfo.hasBookings && !dayInfo.isPast && (
-                                            <span className="text-[10px] text-acid-lime font-bold">{dayInfo.bookingCount}</span>
+                                            <span className="text-[10px] text-neon-pink font-bold">{dayInfo.bookingCount}</span>
                                         )}
                                     </button>
                                 );
@@ -330,7 +330,7 @@ export function AdminPage() {
 
                         {/* Selected Date Panel */}
                         {selectedDate && (
-                            <div className="bg-off-white/5 border border-off-white/10 rounded-2xl p-4 sm:p-6 mb-8">
+                            <div className="bg-lab-white/5 border border-lab-white/10 rounded-2xl p-4 sm:p-6 mb-8">
                                 <h3 className="font-display font-bold text-sm sm:text-lg uppercase tracking-wider mb-3 sm:mb-4">
                                     {formatSelectedDate(selectedDate)}
                                 </h3>
@@ -338,7 +338,7 @@ export function AdminPage() {
                                 {/* Bookings on this date */}
                                 {selectedDateBookings.length > 0 && (
                                     <div className="mb-4">
-                                        <p className="text-acid-lime font-bold text-xs sm:text-sm uppercase mb-3 flex items-center gap-2">
+                                        <p className="text-neon-pink font-bold text-xs sm:text-sm uppercase mb-3 flex items-center gap-2">
                                             <AlertTriangle size={14} />
                                             {selectedDateBookings.length} confirmed booking{selectedDateBookings.length > 1 ? 's' : ''}
                                         </p>
@@ -349,18 +349,18 @@ export function AdminPage() {
                                                 const serviceName = b.services?.name || 'Service';
 
                                                 return (
-                                                    <div key={b.id} className="bg-off-white/[0.07] rounded-xl p-3 sm:p-4 border border-off-white/10">
+                                                    <div key={b.id} className="bg-lab-white/[0.07] rounded-xl p-3 sm:p-4 border border-lab-white/10">
                                                         {/* Name + Service */}
                                                         <div className="flex items-start justify-between mb-2">
                                                             <div>
                                                                 <p className="font-bold text-sm sm:text-base flex items-center gap-2">
-                                                                    <User size={14} className="text-acid-lime shrink-0" />
+                                                                    <User size={14} className="text-neon-pink shrink-0" />
                                                                     {b.name}
                                                                 </p>
-                                                                <p className="text-off-white/50 text-xs sm:text-sm mt-0.5 ml-[22px]">{serviceName}</p>
+                                                                <p className="text-lab-white/50 text-xs sm:text-sm mt-0.5 ml-[22px]">{serviceName}</p>
                                                             </div>
                                                             <div className="text-right shrink-0">
-                                                                <p className="text-off-white/70 text-xs sm:text-sm flex items-center gap-1">
+                                                                <p className="text-lab-white/70 text-xs sm:text-sm flex items-center gap-1">
                                                                     <Clock size={12} className="shrink-0" />
                                                                     {formatTime(b.start_datetime)} – {formatTime(b.end_datetime)}
                                                                 </p>
@@ -369,7 +369,7 @@ export function AdminPage() {
 
                                                         {/* Notes */}
                                                         {b.notes && (
-                                                            <p className="text-off-white/40 text-xs italic mb-3 ml-[22px] border-l-2 border-off-white/10 pl-2">
+                                                            <p className="text-lab-white/40 text-xs italic mb-3 ml-[22px] border-l-2 border-lab-white/10 pl-2">
                                                                 {b.notes}
                                                             </p>
                                                         )}
@@ -379,7 +379,7 @@ export function AdminPage() {
                                                             {cleanPhone && (
                                                                 <a
                                                                     href={`tel:${cleanPhone}`}
-                                                                    className="flex-1 flex items-center justify-center gap-1.5 bg-money-green/80 hover:bg-money-green text-off-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition-colors"
+                                                                    className="flex-1 flex items-center justify-center gap-1.5 bg-obsidian/80 hover:bg-obsidian text-lab-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition-colors"
                                                                 >
                                                                     <Phone size={14} />
                                                                     Call
@@ -390,7 +390,7 @@ export function AdminPage() {
                                                                     href={`https://instagram.com/${cleanIG}`}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="flex-1 flex items-center justify-center gap-1.5 bg-off-white/10 hover:bg-off-white/20 text-off-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition-colors"
+                                                                    className="flex-1 flex items-center justify-center gap-1.5 bg-lab-white/10 hover:bg-lab-white/20 text-lab-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition-colors"
                                                                 >
                                                                     <Instagram size={14} />
                                                                     @{cleanIG}
@@ -399,7 +399,7 @@ export function AdminPage() {
                                                             {cleanPhone && (
                                                                 <a
                                                                     href={`sms:${cleanPhone}`}
-                                                                    className="flex-1 flex items-center justify-center gap-1.5 bg-off-white/10 hover:bg-off-white/20 text-off-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition-colors"
+                                                                    className="flex-1 flex items-center justify-center gap-1.5 bg-lab-white/10 hover:bg-lab-white/20 text-lab-white text-xs sm:text-sm font-bold py-2.5 rounded-lg transition-colors"
                                                                 >
                                                                     💬 Text
                                                                 </a>
@@ -416,7 +416,7 @@ export function AdminPage() {
                                 {blockedDates.includes(selectedDate) ? (
                                     <button
                                         onClick={() => handleUnblockDate(selectedDate)}
-                                        className="flex items-center gap-2 w-full justify-center bg-off-white/10 hover:bg-off-white/20 text-off-white font-bold py-3 rounded-xl transition-all uppercase tracking-wider text-sm"
+                                        className="flex items-center gap-2 w-full justify-center bg-lab-white/10 hover:bg-lab-white/20 text-lab-white font-bold py-3 rounded-xl transition-all uppercase tracking-wider text-sm"
                                     >
                                         <Unlock size={16} />
                                         Unblock This Day
@@ -431,7 +431,7 @@ export function AdminPage() {
                                 ) : (
                                     <button
                                         onClick={() => handleBlockDate(selectedDate)}
-                                        className="flex items-center gap-2 w-full justify-center bg-red-500/80 hover:bg-red-500 text-off-white font-bold py-3 rounded-xl transition-all uppercase tracking-wider text-sm"
+                                        className="flex items-center gap-2 w-full justify-center bg-red-500/80 hover:bg-red-500 text-lab-white font-bold py-3 rounded-xl transition-all uppercase tracking-wider text-sm"
                                     >
                                         <Lock size={16} />
                                         Block This Day Off
